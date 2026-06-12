@@ -195,6 +195,30 @@ NÃO, PORQUE EU SOU UM PRETO INFELIZ 😒
 
 </div>
 
+<div id="presente" class="container" style="display:none;">
+
+<h1 style="font-size:6rem;">🎁</h1>
+
+<p class="subtitle">
+Antes de continuar...
+</p>
+
+<p class="text">
+Quero que saiba que isso foi feito especialmente para você.
+</p>
+
+<div class="buttons">
+
+<button id="abrir">
+Abrir o presente ❤️
+</button>
+
+</div>
+
+</div>
+
+<script>
+
 <script>
 
 for(let i=0;i<120;i++){
@@ -245,18 +269,22 @@ nao.style.left=Math.random()*80+"vw";
 nao.style.top=Math.random()*80+"vh";
 
 });
+const tela1 = document.querySelector(".container");
+const tela2 = document.getElementById("presente");
 
 document.getElementById("sim").addEventListener("click",()=>{
 
-document.body.style.transition="1s";
-
-document.body.style.opacity="0";
+tela1.style.opacity="0";
 
 setTimeout(()=>{
 
-window.location.href="#presente";
+tela1.style.display="none";
 
-},1000);
+tela2.style.display="block";
+
+tela2.style.animation="fadeIn 1s ease";
+
+},800);
 
 });
 
