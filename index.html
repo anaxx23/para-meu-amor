@@ -8,81 +8,157 @@
 
 <title>Para Meu Amor ❤️</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
 <style>
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
 }
 
 body{
 height:100vh;
+overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#8B0000,#ff4d6d);
-overflow:hidden;
+
+background:
+linear-gradient(
+135deg,
+#120000,
+#220000,
+#3a0000,
+#5a0015
+);
+
+font-family:'Poppins',sans-serif;
 color:white;
+position:relative;
 }
 
 .container{
 text-align:center;
-z-index:2;
+z-index:10;
 padding:20px;
+max-width:700px;
+animation:fadeIn 2s ease;
 }
 
 h1{
-font-size:3rem;
+font-family:'Cormorant Garamond',serif;
+font-size:5rem;
+font-weight:700;
 margin-bottom:20px;
+letter-spacing:2px;
 }
 
-p{
-font-size:1.3rem;
-margin-bottom:30px;
+.subtitle{
+font-size:1.2rem;
+opacity:.9;
+margin-bottom:15px;
+}
+
+.text{
+font-size:1.1rem;
+opacity:.8;
+margin-bottom:40px;
+}
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
 }
 
 button{
-padding:15px 30px;
-font-size:18px;
-border:none;
-border-radius:30px;
 cursor:pointer;
-margin:10px;
+border:none;
+padding:15px 35px;
+font-size:1rem;
+border-radius:50px;
 transition:.3s;
 }
 
 #sim{
-background:white;
-color:#ff4d6d;
-font-weight:bold;
+background:rgba(255,255,255,0.08);
+color:white;
+border:1px solid rgba(255,215,0,.5);
+backdrop-filter:blur(10px);
 }
 
 #sim:hover{
-transform:scale(1.1);
+transform:scale(1.08);
+box-shadow:0 0 25px rgba(255,215,0,.3);
 }
 
 #nao{
-background:#ffb3c1;
+background:rgba(255,255,255,.04);
+color:#ddd;
+border:1px solid rgba(255,255,255,.2);
 }
 
 .heart{
 position:absolute;
-font-size:25px;
-animation:subir linear infinite;
+font-size:16px;
+opacity:.25;
+animation:float linear infinite;
+pointer-events:none;
 }
 
-@keyframes subir{
+@keyframes float{
+
+0%{
+transform:translateY(110vh);
+opacity:0;
+}
+
+10%{
+opacity:.25;
+}
+
+100%{
+transform:translateY(-120px);
+opacity:0;
+}
+
+}
+
+@keyframes fadeIn{
 
 from{
-transform:translateY(100vh);
-opacity:1;
+opacity:0;
+transform:translateY(20px);
 }
 
 to{
-transform:translateY(-120px);
-opacity:0;
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.gold{
+position:absolute;
+width:3px;
+height:3px;
+background:gold;
+border-radius:50%;
+opacity:.4;
+animation:blink 2s infinite;
+}
+
+@keyframes blink{
+
+0%,100%{
+opacity:.2;
+}
+
+50%{
+opacity:.8;
 }
 
 }
@@ -95,41 +171,70 @@ opacity:0;
 
 <div class="container">
 
-<h1>Oi, meu amor ❤️</h1>
+<h1>Oi, meu amor.</h1>
 
-<p>
-Fiz uma coisa para você...
+<p class="subtitle">
+Passei algum tempo criando algo especial.
 </p>
 
-<p>
-Quer ver o que eu fiz?
+<p class="text">
+E eu gostaria que você visse até o final ❤️
 </p>
 
-<button id="sim">SIM, SEMPRE ❤️</button>
+<div class="buttons">
 
-<button id="nao">NÃO, PORQUE EU SOU UM PRETO INFELIZ 😒</button>
+<button id="sim">
+SIM ❤️
+</button>
+
+<button id="nao">
+NÃO 😒
+</button>
+
+</div>
 
 </div>
 
 <script>
 
-for(let i=0;i<40;i++){
+for(let i=0;i<120;i++){
 
-let heart=document.createElement("div");
+const heart=document.createElement("div");
 
-heart.innerHTML="❤️";
+heart.className="heart";
 
-heart.classList.add("heart");
+heart.innerHTML="❤";
 
 heart.style.left=Math.random()*100+"vw";
 
-heart.style.animationDuration=(Math.random()*5+4)+"s";
+heart.style.animationDuration=
+(Math.random()*5+3)+"s";
+
+heart.style.fontSize=
+(Math.random()*18+10)+"px";
 
 document.body.appendChild(heart);
 
 }
 
-let nao=document.getElementById("nao");
+for(let i=0;i<40;i++){
+
+const gold=document.createElement("div");
+
+gold.className="gold";
+
+gold.style.left=Math.random()*100+"vw";
+
+gold.style.top=Math.random()*100+"vh";
+
+gold.style.animationDelay=
+Math.random()*3+"s";
+
+document.body.appendChild(gold);
+
+}
+
+const nao=document.getElementById("nao");
 
 nao.addEventListener("mouseover",()=>{
 
@@ -141,14 +246,21 @@ nao.style.top=Math.random()*80+"vh";
 
 });
 
-document.getElementById("sim").onclick=()=>{
+document.getElementById("sim").addEventListener("click",()=>{
 
-alert("Você escolheu a resposta correta ❤️");
+document.body.style.transition="1s";
 
-};
+document.body.style.opacity="0";
+
+setTimeout(()=>{
+
+window.location.href="#presente";
+
+},1000);
+
+});
 
 </script>
 
 </body>
-
 </html>
