@@ -1,16 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
+
 <head>
-<title>Para Você ❤️</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Meu Amor ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#8B0000,#ff4d6d);
+overflow:hidden;
+color:white;
+}
+
+.container{
+text-align:center;
+z-index:2;
+padding:20px;
+}
+
+h1{
+font-size:3rem;
+margin-bottom:20px;
+}
+
+p{
+font-size:1.3rem;
+margin-bottom:30px;
+}
+
+button{
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+margin:10px;
+transition:.3s;
+}
+
+#sim{
+background:white;
+color:#ff4d6d;
+font-weight:bold;
+}
+
+#sim:hover{
+transform:scale(1.1);
+}
+
+#nao{
+background:#ffb3c1;
+}
+
+.heart{
+position:absolute;
+font-size:25px;
+animation:subir linear infinite;
+}
+
+@keyframes subir{
+
+from{
+transform:translateY(100vh);
+opacity:1;
+}
+
+to{
+transform:translateY(-120px);
+opacity:0;
+}
+
+}
+
+</style>
+
 </head>
 
-<body style="background:pink;text-align:center;padding-top:100px;font-family:Arial;">
+<body>
 
-<h1>❤️ Oi Amor ❤️</h1>
+<div class="container">
 
-<p>Se você está vendo isso, significa que fiz um site só para você.</p>
+<h1>Oi, meu amor ❤️</h1>
 
-<p>Eu te amo muito ❤️</p>
+<p>
+Passei um tempinho criando uma coisa especial para você...
+</p>
+
+<p>
+Quer ver o que eu fiz?
+</p>
+
+<button id="sim">SIM ❤️</button>
+
+<button id="nao">NÃO 😒</button>
+
+</div>
+
+<script>
+
+for(let i=0;i<40;i++){
+
+let heart=document.createElement("div");
+
+heart.innerHTML="❤️";
+
+heart.classList.add("heart");
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.animationDuration=(Math.random()*5+4)+"s";
+
+document.body.appendChild(heart);
+
+}
+
+let nao=document.getElementById("nao");
+
+nao.addEventListener("mouseover",()=>{
+
+nao.style.position="absolute";
+
+nao.style.left=Math.random()*80+"vw";
+
+nao.style.top=Math.random()*80+"vh";
+
+});
+
+document.getElementById("sim").onclick=()=>{
+
+alert("Você escolheu a resposta correta ❤️");
+
+};
+
+</script>
 
 </body>
+
 </html>
